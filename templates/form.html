@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{website_metadata["page_title"]}}
+{% endblock %}
+
+{% block main %}
+
+<!-- Main container -->
+<div class="container" id="main-form-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="d-none d-sm-block" id="demo-title">DEMO FORM</h1>
+            <h2>Registration Card</h2>
+            <hr class="dashed">
+            <form class="signature-pad-form" method="POST" enctype="multipart/form-data">
+                {{ reg_card_form.hidden_tag() }}
+                <div class="row field">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            {{ reg_card_form.no_guests.label }} {{ reg_card_form.no_guests(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <h2>Leading Guest</h2>
+                <div class="row field">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ reg_card_form.title.label }} {{ reg_card_form.title(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ reg_card_form.guest_name.label }} {{ reg_card_form.guest_name(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ reg_card_form.guest_surname.label }} {{ reg_card_form.guest_surname(class="form-control")
+                            }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row field">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ reg_card_form.email.label }} {{ reg_card_form.email(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ reg_card_form.tel.label }} {{ reg_card_form.tel(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <h2>Journey Details</h2>
+                <div class="row field">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ reg_card_form.arrival.label }} {{ reg_card_form.arrival(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row field">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ reg_card_form.departure.label }} {{ reg_card_form.departure(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <h2>Reservation and Details</h2>
+                <div class="row field">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ reg_card_form.comment.label }} {{ reg_card_form.comment(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <h2>Document Upload and Signature</h2>
+                <div class="row field">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ reg_card_form.files.label }} {{ reg_card_form.files(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <h2>How did you hear about ZURI?</h2>
+                <div class="row field">
+                    <div class="col-md-12">
+                        <div class="form-group radio">
+                            {{ reg_card_form.radio.label }} {{ reg_card_form.radio(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row field">
+                    <div class="col-md-12">
+                        <div class="terms">
+                            <h2>Terms and conditions</h2>
+                        </div>
+                        <div class="term-text">
+                            <p>By signing this registration card I accept to be held personally liable for all charges
+                                related to this stay and that the hotel is authorized to do a charge on my bank card
+                                provided upon arrival to conclude my stay. The hotel is not responsible for money and
+                                valuables above the amount of USD 250 or equivalent left at other than the resort camera
+                                monitored safety deposit boxes available at Reception, free of charge. Any valuables
+                                below this amount should be kept at the in-room safe. Zuri Zanzibar collects and
+                                processes your personal data in order to provide you with information on products and
+                                services. By filling in your details you give a consent to be contacted, which you can
+                                refuse at any time. We respectfully remind you that our check out time is at 11:00.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row field">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ reg_card_form.submit(class="form-control btn btn-warning") }}
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+/*
+simple fetch script to send data to the server over flask framework
+    let data = new FormData()
+    data.append('guest_name', 'olda123')
+    fetch({{url_for('form') | tojson}}, {
+        "method": "POST",
+        "body": data
+    })
+    .then((response) => response)
+    .then((data) => {
+    console.log('Success', data);
+    })
+*/
+</script>
+{% endblock %}

@@ -1,0 +1,243 @@
+.contacts {
+  margin: auto;
+  margin-top: 10%;
+  width: 80%;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.icon {
+    width: 2em;
+    height 2em;
+}
+
+.skills {
+  margin: auto;
+  margin-top: 5%;
+  width: 80%;
+  padding: 10px;
+}
+
+.certification {
+  margin: auto;
+  margin-top: 5%;
+  width: 80%;
+  padding: 10px;
+}
+
+.education {
+  margin: auto;
+  margin-top: 5%;
+  width: 80%;
+  padding: 10px;
+  font-size: 1.1em;
+  word-spacing: 0.1em;
+  line-height: 200%;
+}
+
+.interests {
+  margin: auto;
+  margin-top: 5%;
+  width: 80%;
+  padding: 10px;
+  font-size: 1.1em;
+  word-spacing: 0.1em;
+  line-height: 200%;
+}
+
+
+.introduction {
+    padding: 5%;
+    text-align: center;
+    margin-top: 2%;
+    margin: auto;
+    width: 100%;
+
+}
+
+#principal_name {
+    font-size: 4em;
+    letter-spacing: 0em;
+}
+
+#principal_about {
+    margin-top: 2%;
+}
+
+#principal_bio {
+    padding-top: 5%;
+    word-spacing: 0.2em;
+    <!--  -->
+}
+
+.profile_summary {
+    padding: 2%;
+    padding-right: 5%;
+    margin-top: 2%;
+
+}
+
+#profile_header {
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    word-spacing: 0.2em;
+}
+
+#profile_paragraph {
+    padding-left: 2%;
+    font-size: 1.1em;
+    word-spacing: 0.1em;
+    line-height: 200%;
+}
+
+.work_experience {
+    padding: 2%;
+    padding-right: 5%;
+    margin-top: 2%;
+}
+
+#work_ex_header {
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+}
+
+.job_title {
+    padding-left: 2%;
+}
+
+.job_company {
+    padding-left: 2%;
+}
+
+.job_description {
+    padding-left: 2%;
+    font-size: 1.1em;
+    word-spacing: 0.1em;
+    line-height: 200%;
+    padding-bottom: 3%;
+}
+/*-- Outer div for progress bar */
+.progress {
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 70px;
+    width: 100%;
+    background-color: #D8D9CF;
+
+
+}
+/* Inner div for progress bar */
+.progress-bar {
+    width: 50%;
+    background-color: #51557E;
+    height: 25px;
+}
+
+
+#footer {
+height: 120px;
+background-color: #51557E;
+color: white;
+
+}
+
+#navbar {
+background-color: #51557E;
+color: white;
+}
+
+#navbar-text {
+font-size: 30px;
+}
+#aws-logo {
+width: 100px;
+}
+
+html {
+  /* Add the blur effect */
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
+}
+
+body {
+font-family: 'Roboto Condensed', sans-serif;
+background-image: url("../assets/background.jpeg");
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+}
+
+#left-col-wrapper {
+background-color: #FCF8E8;
+
+}
+
+#right-col-wrapper {
+background-color: #FCF8E8;
+}
+
+
+#image-wrapper {
+position: relative;
+}
+
+#name-in-image {
+  width: 30%;
+  position: absolute;
+  overflow: hidden;
+  bottom: 25%;
+  left: 55%;
+
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+
+#phone {
+padding-top: 0%;
+}
+
+/* CSS for form page*/
+
+.field {
+padding-bottom: 3%;
+}
+
+.radio li {
+list-style-type: none;
+}
+
+.term-text {
+font-size: 0.8em;
+}
+
+#main-form-wrapper {
+background-color: white;
+}
+
+#submit {
+height: 100px;
+color: #51557E;
+font-size: 2em;
+}
+
+#demo-title {
+padding-bottom: 50px;
+}
+/* css after this section is not working - investigate */
+btn {
+    color: black;
+    background-color: #FCF8E8;
+    border-color: #FCF8E8;
+
+btn:link, #btn:visited, #btn:hover, #btn:active {
+    background-color: #FCF8E8;
+    border-color: #FCF8E8;
+}
+
+
