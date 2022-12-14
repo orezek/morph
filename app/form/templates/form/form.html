@@ -126,7 +126,7 @@
 simple fetch script to send data to the server over flask framework
     let data = new FormData()
     data.append('guest_name', 'olda123')
-    fetch({{url_for('form') | tojson}}, {
+    fetch({{url_for('form_blueprint.form') | tojson}}, {
         "method": "POST",
         "body": data
     })
