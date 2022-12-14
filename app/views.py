@@ -1,9 +1,9 @@
 from app.models import Registration, Guests, UploadedFiles
-from app.form.forms import RegCardForm
+from app.forms import RegCardForm
 from app import application
-from flask import render_template, request, redirect, url_for, Blueprint
-from app.data_model import website_metadata, navbar_metadata
-from app.helpers import generate_session_id, save_uploaded_files
+from flask import render_template, request, Blueprint
+from app.helpers.data_model import website_metadata, navbar_metadata
+from app.helpers.helpers import generate_session_id, save_uploaded_files
 from app import db
 
 form_blueprint = Blueprint("form_blueprint", __name__, template_folder="templates/form")
