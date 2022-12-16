@@ -5,6 +5,7 @@ import boto3
 from botocore.exceptions import ClientError
 from s3transfer import S3UploadFailedError
 from werkzeug.utils import secure_filename
+from datetime import datetime
 
 BUCKET_NAME = "aurora-form-hotel"
 
@@ -73,6 +74,15 @@ def list_buckets() -> str:
     for bucket in buckets["Buckets"]:
         print(bucket["Name"])
 
+
+def convert_date(form_date: datetime.date) -> datetime.date:
+    """
+    Converts date value from the forms fields to python date that DB can well understand.
+    :param form_date: date from the HTML form
+    :return: date in Python date time format
+    """
+    date = datetime.strptime(str(form_date), "%Y-%m-%d")
+    return date
 
 # if __name__ == "__main__":
 #     # list_buckets()

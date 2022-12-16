@@ -3,9 +3,9 @@ from app.forms import RegCardForm
 from app import application
 from flask import render_template, request, Blueprint
 from app.helpers.data_model import website_metadata, navbar_metadata
-from app.helpers.helpers import generate_session_id, save_uploaded_files, save_uploaded_files_s3
+from app.helpers.helpers import generate_session_id, save_uploaded_files, save_uploaded_files_s3, convert_date
 from app import db
-
+from datetime import datetime
 form_blueprint = Blueprint("form_blueprint", __name__, template_folder="templates/form")
 
 
@@ -15,8 +15,8 @@ def form():
     if reg_card_form.validate_on_submit():
         reg_id = generate_session_id(reg_card_form)
         links = save_uploaded_files_s3(request, application)
-        reg = Registration(reg_card_form.arrival.data,
-                           reg_card_form.departure.data,
+        reg = Registration(convert_date(reg_card_form.arrival.data),
+                           convert_date(reg_card_form.departure.data),
                            reg_card_form.comment.data,
                            reg_card_form.radio.data,
                            reg_id)
