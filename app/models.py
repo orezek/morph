@@ -2,6 +2,9 @@ from app import db
 
 
 class UploadedFiles(db.Model):
+    """
+    Uploaded files table for data uploaded from the form.
+    """
     id = db.Column(db.Integer, primary_key=True)
     reg_id = db.Column(db.String, db.ForeignKey("registration.reg_id"))
     file_link = db.Column(db.String)
@@ -17,6 +20,9 @@ class UploadedFiles(db.Model):
 
 
 class Registration(db.Model):
+    """
+    Registration table
+    """
     id = db.Column(db.Integer, primary_key=True)
     reg_id = db.Column(db.String)
     reservation_no = db.Column(db.String)
@@ -28,6 +34,14 @@ class Registration(db.Model):
     file = db.relationship("UploadedFiles", backref="registration", lazy="dynamic")
 
     def __init__(self, arrival, departure, reservation_comment, reservation_source, reg_id):
+        """
+        Constructor for registration object
+        :param arrival:
+        :param departure:
+        :param reservation_comment:
+        :param reservation_source:
+        :param reg_id:
+        """
         self.arrival = arrival
         self.departure = departure
         self.reservation_comment = reservation_comment
@@ -41,6 +55,9 @@ class Registration(db.Model):
 
 
 class Guests(db.Model):
+    """
+    Guest table
+    """
     id = db.Column(db.Integer, primary_key=True)
     reg_id = db.Column(db.String, db.ForeignKey("registration.reg_id"))
     leading_guest = db.Column(db.String)

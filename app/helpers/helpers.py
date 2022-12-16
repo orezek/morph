@@ -1,8 +1,12 @@
 import hashlib
 import os
 import random
-
+import boto3
+from botocore.exceptions import ClientError
+from s3transfer import S3UploadFailedError
 from werkzeug.utils import secure_filename
+
+BUCKET_NAME = "aurora-form-hotel"
 
 
 # Generates a random unique session string. Is using SHA256
@@ -37,3 +41,38 @@ def save_uploaded_files(request_obj, application_obj) -> list:
     return links
 
 
+# save files to AWS S3
+def upload_to_s3(file_name: str, bucket_name: str, object_name: str):
+    s3 = boto3.client("s3")
+    try:
+        s3.upload_file(file_name, bucket_name, object_name)
+    except ClientError as e:
+        print(e)
+    except S3UploadFailedError as e:
+        print(e)
+
+
+def save_uploaded_files_s3(request_obj, application_obj):
+    """
+    save files to a local directory and use the filename from the user input to initiate upload to s3 bucket in AWS
+    :return: list of file names with absolute path
+    """
+    files = request_obj.files.getlist("files")
+    links = []
+    for file in files:
+        f_name = os.path.join(application_obj.config["UPLOAD_FOLDER"], secure_filename(file.filename))
+        file.save(f_name)
+        links.append(f_name)
+        upload_to_s3(f_name, BUCKET_NAME, secure_filename(file.filename))
+    return links
+
+
+def list_buckets() -> str:
+    s3 = boto3.client("s3")
+    buckets = s3.list_buckets()
+    for bucket in buckets["Buckets"]:
+        print(bucket["Name"])
+
+
+# if __name__ == "__main__":
+#     # list_buckets()
