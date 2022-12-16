@@ -4,9 +4,6 @@ import os
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, "app/static", "uploaded_files")
 
-print(APP_ROOT)
-print(UPLOAD_FOLDER)
-
 # DB engine and connection setup - make ENV or AWS Param. store
 user_name = "admin"
 password = "Mirodinga1"
