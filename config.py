@@ -22,4 +22,4 @@ class Config(object):
     SECRET_KEY = os.environ.get("SECRET_KEY") or "adfadfsfsfds"
     UPLOAD_FOLDER = UPLOAD_FOLDER
     SQLALCHEMY_DATABASE_URI = db_connection_sqlite
-    FLASK_RUN_PORT = 5001
+
