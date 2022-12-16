@@ -85,29 +85,23 @@ def convert_date(form_date: datetime.date) -> datetime.date:
     return date
 
 
-def radio_choice_convertor(form_field) -> str:
+def radio_choice_convertor(form_field: int) -> str:
     """
-    Converts int value returned from HTML form into the actual choice option
-    :param form_field: data from the HTML field
-    :return: String choice value provided in the HTML form
+    Convert an integer value to string of choice
+    :param form_field: int value from the form radio field
+    :return: string representation of the value from the form field
     """
-    if form_field == "1":
-        return "Friend or family member"
-    elif form_field == "2":
-        return "Travel agency or similar"
-    elif form_field == "3":
-        return "Internet search"
-    elif form_field == "4":
-        return "Magazine or similar"
-    elif form_field == "5":
-        return "Design Hotels"
-    elif form_field == "6":
-        return "Design Hotels"
-    elif form_field == "7":
-        return "Other"
-    else:
-        return "No value selected"
-
+    choices = {
+        1: "Friend or family member",
+        2: "Travel agency or similar",
+        3: "Internet search",
+        4: "Magazine or similar",
+        5: "Design Hotels",
+        6: "Design Hotels",
+        7: "Other"
+    }
+    return choices.get(form_field, "Invalid value")
 
 # if __name__ == "__main__":
-#     # list_buckets()
+# #     # list_buckets()
+

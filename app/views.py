@@ -20,7 +20,7 @@ def form():
         reg = Registration(convert_date(reg_card_form.arrival.data),
                            convert_date(reg_card_form.departure.data),
                            reg_card_form.comment.data,
-                           radio_choice_convertor(reg_card_form.radio.data),
+                           radio_choice_convertor(int(reg_card_form.radio.data)),
                            reg_id)
         guest = Guests("False",
                        reg_card_form.title.data,
