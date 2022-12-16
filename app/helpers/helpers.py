@@ -84,5 +84,30 @@ def convert_date(form_date: datetime.date) -> datetime.date:
     date = datetime.strptime(str(form_date), "%Y-%m-%d")
     return date
 
+
+def radio_choice_convertor(form_field) -> str:
+    """
+    Converts int value returned from HTML form into the actual choice option
+    :param form_field: data from the HTML field
+    :return: String choice value provided in the HTML form
+    """
+    if form_field == "1":
+        return "Friend or family member"
+    elif form_field == "2":
+        return "Travel agency or similar"
+    elif form_field == "3":
+        return "Internet search"
+    elif form_field == "4":
+        return "Magazine or similar"
+    elif form_field == "5":
+        return "Design Hotels"
+    elif form_field == "6":
+        return "Design Hotels"
+    elif form_field == "7":
+        return "Other"
+    else:
+        return "No value selected"
+
+
 # if __name__ == "__main__":
 #     # list_buckets()

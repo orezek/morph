@@ -3,9 +3,11 @@ from app.forms import RegCardForm
 from app import application
 from flask import render_template, request, Blueprint
 from app.helpers.data_model import website_metadata, navbar_metadata
-from app.helpers.helpers import generate_session_id, save_uploaded_files, save_uploaded_files_s3, convert_date
+from app.helpers.helpers import generate_session_id, save_uploaded_files, save_uploaded_files_s3, convert_date, \
+    radio_choice_convertor
 from app import db
 from datetime import datetime
+
 form_blueprint = Blueprint("form_blueprint", __name__, template_folder="templates/form")
 
 
@@ -18,7 +20,7 @@ def form():
         reg = Registration(convert_date(reg_card_form.arrival.data),
                            convert_date(reg_card_form.departure.data),
                            reg_card_form.comment.data,
-                           reg_card_form.radio.data,
+                           radio_choice_convertor(reg_card_form.radio.data),
                            reg_id)
         guest = Guests("False",
                        reg_card_form.title.data,

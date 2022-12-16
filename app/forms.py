@@ -3,6 +3,10 @@ from wtforms import (StringField, SubmitField, SelectField,
                      EmailField, TelField, DateField,
                      TextAreaField, MultipleFileField, RadioField, Label)
 
+radio_choices = [(1, "Friend or family member"), (2, "Travel agency or similar"), (3, "Internet search"),
+                 (4, "Magazine or similar"), (5, "Social media or similar"), (6, "Design Hotels"),
+                 (7, "Other")]
+
 
 class RegCardForm(FlaskForm):
     no_guests = SelectField("Number of Guests", choices=[(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)])
@@ -18,10 +22,6 @@ class RegCardForm(FlaskForm):
                             "anniversary, honeymoon, birthday…)")
     files = MultipleFileField("Upload passport photo of all travelers")
     radio = RadioField("",
-                       choices=[(1, "Friend or family member"), (2, "Travel agency or similar"), (3, "Internet search"),
-                                (4, "Magazine or similar"), (5, "Social media or similar"), (6, "Design Hotels"),
-                                (7, "Other")])
+                       choices=radio_choices)
     # signature field = to do!
     submit = SubmitField("Submit")
-
-
