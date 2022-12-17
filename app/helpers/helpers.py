@@ -54,7 +54,7 @@ def upload_to_s3(file_name: str, bucket_name: str, object_name: str):
         print(e)
 
 
-def save_uploaded_files_s3(request_obj, application_obj):
+def save_uploaded_files_s3(request_obj, application_obj, reg_id):
     """
     save files to a local directory and use the filename from the user input to initiate upload to s3 bucket in AWS
     :return: list of file names with absolute path
@@ -65,7 +65,9 @@ def save_uploaded_files_s3(request_obj, application_obj):
         f_name = os.path.join(application_obj.config["UPLOAD_FOLDER"], secure_filename(file.filename))
         file.save(f_name)
         links.append(f_name)
-        upload_to_s3(f_name, BUCKET_NAME, secure_filename(file.filename))
+        prefix = reg_id
+        key = prefix + "/" + secure_filename(file.filename)
+        upload_to_s3(f_name, BUCKET_NAME, key)
     return links
 
 
@@ -119,7 +121,7 @@ def title_selection_mapper(form_title_field: str) -> str:
     }
     return title.get(form_title_field, "No value chosen")
 
-if __name__ == "__main__":
-     # list_buckets()
-    print(len("/Users/aldokezer/Development/morphe/app/static/uploaded_files/Monika_passport.jpeg"))
-
+# if __name__ == "__main__":
+#      # list_buckets()
+#     print(len("/Users/aldokezer/Development/morphe/app/static/uploaded_files/Monika_passport.jpeg"))
+#

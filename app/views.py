@@ -16,7 +16,7 @@ def form():
     reg_card_form = RegCardForm()
     if reg_card_form.validate_on_submit():
         reg_id = generate_session_id(reg_card_form)
-        links = save_uploaded_files_s3(request, application)
+        links = save_uploaded_files_s3(request, application, reg_id)
         reg = Registration(convert_date(reg_card_form.arrival.data),
                            convert_date(reg_card_form.departure.data),
                            reg_card_form.comment.data,

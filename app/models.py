@@ -33,7 +33,7 @@ class Registration(db.Model):
         self.reg_id = reg_id
 
     def __repr__(self):
-        return f"{self.reg_id_id}, {self.arrival}, {self.departure}," \
+        return f"{self.reg_id}, {self.arrival}, {self.departure}," \
                f"{self.reservation_comment}, {self.reservation_source}," \
                f"{self.guest.guest_name}"
 
@@ -43,7 +43,7 @@ class Guests(db.Model):
     Guest table
     """
     id = db.Column(db.Integer, primary_key=True)
-    reg_id_id = db.Column(db.String(10), db.ForeignKey("registration.reg_id", ondelete="CASCADE", onupdate="CASCADE"))
+    reg_id = db.Column(db.String(10), db.ForeignKey("registration.reg_id", ondelete="CASCADE", onupdate="CASCADE"))
     leading_guest = db.Column(db.Boolean, default=False)
     title = db.Column(db.String(10))
     guest_name = db.Column(db.String(100))
@@ -51,14 +51,14 @@ class Guests(db.Model):
     guest_email = db.Column(db.String(100))
     guest_phone = db.Column(db.String(50))
 
-    def __init__(self, leading_guest, title, guest_name, guest_surname, guest_email, guest_phone, reg_id_id):
+    def __init__(self, leading_guest, title, guest_name, guest_surname, guest_email, guest_phone, reg_id):
         self.leading_guest = leading_guest
         self.title = title
         self.guest_name = guest_name
         self.guest_surname = guest_surname
         self.guest_email = guest_email
         self.guest_phone = guest_phone
-        self.reg_id_id = reg_id_id
+        self.reg_id = reg_id
 
     def __repr__(self):
         return f"{self.leading_guest}, {self.title}, {self.guest_name}," \
@@ -70,17 +70,17 @@ class UploadedFiles(db.Model):
     Uploaded files table for data uploaded from the form.
     """
     id = db.Column(db.Integer, primary_key=True)
-    reg_id_id = db.Column(db.String(10), db.ForeignKey("registration.reg_id", ondelete="CASCADE", onupdate="CASCADE"))
+    reg_id = db.Column(db.String(10), db.ForeignKey("registration.reg_id", ondelete="CASCADE", onupdate="CASCADE"))
     file_link = db.Column(db.String(500))
     is_signature = db.Column(db.Boolean, default=False)
 
-    def __init__(self, file_link, is_signature, reg_id_id):
+    def __init__(self, file_link, is_signature, reg_id):
         self.file_link = file_link
         self.is_signature = is_signature
-        self.reg_id_id = reg_id_id
+        self.reg_id = reg_id
 
     def __repr__(self):
-        return f"{self.id}, {self.reg_id_id}, {self.file_link}, {self.is_signature}"
+        return f"{self.id}, {self.reg_id}, {self.file_link}, {self.is_signature}"
 
 
 
