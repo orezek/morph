@@ -8,6 +8,7 @@ from werkzeug.utils import secure_filename
 from datetime import datetime
 
 BUCKET_NAME = "aurora-form-hotel"
+BUCKET_URL = f"https://{BUCKET_NAME}.s3.eu-central-1.amazonaws.com/"
 
 
 # Generates a random unique session string. Is using SHA256
@@ -44,17 +45,17 @@ def save_uploaded_files(request_obj, application_obj) -> list:
 
 
 # save files to AWS S3
-def upload_to_s3(file_name: str, bucket_name: str, object_name: str):
+def upload_to_s3(file_obj, bucket_name: str, object_name: str):
     s3 = boto3.client("s3")
     try:
-        s3.upload_file(file_name, bucket_name, object_name)
+        s3.upload_fileobj(file_obj, bucket_name, object_name)
     except ClientError as e:
         print(e)
     except S3UploadFailedError as e:
         print(e)
 
 
-def save_uploaded_files_s3(request_obj, application_obj, reg_id):
+def save_uploaded_files_s3(request_obj, reg_id):
     """
     save files to a local directory and use the filename from the user input to initiate upload to s3 bucket in AWS
     :return: list of file names with absolute path
@@ -62,12 +63,12 @@ def save_uploaded_files_s3(request_obj, application_obj, reg_id):
     files = request_obj.files.getlist("files")
     links = []
     for file in files:
-        f_name = os.path.join(application_obj.config["UPLOAD_FOLDER"], secure_filename(file.filename))
-        file.save(f_name)
-        links.append(f_name)
+        secured_file_name = secure_filename(file.filename)
         prefix = reg_id
-        key = prefix + "/" + secure_filename(file.filename)
-        upload_to_s3(f_name, BUCKET_NAME, key)
+        file_link = BUCKET_URL + prefix + "/" + secured_file_name
+        links.append(file_link)
+        key = prefix + "/" + secure_filename(secured_file_name)
+        upload_to_s3(file, BUCKET_NAME, key)
     return links
 
 
@@ -125,3 +126,5 @@ def title_selection_mapper(form_title_field: str) -> str:
 #      # list_buckets()
 #     print(len("/Users/aldokezer/Development/morphe/app/static/uploaded_files/Monika_passport.jpeg"))
 #
+# https://aurora-form-hotel.s3.eu-central-1.amazonaws.com/202ec71f7/id_back.pdf
+# https://aurora-form-hotel.s3.eu-central-1.amazonaws.com/202ec71f7/id_back.pdf
