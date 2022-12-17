@@ -8,8 +8,8 @@ class UploadedFiles(db.Model):
     """
     id = db.Column(db.Integer, primary_key=True)
     reg_id = db.Column(db.String(10), db.ForeignKey("registration.reg_id"))
-    file_link = db.Column(db.String)
-    is_signature = db.Column(db.String)
+    file_link = db.Column(db.String(500))
+    is_signature = db.Column(db.Boolean, default=False)
 
     def __init__(self, file_link, is_signature, reg_id):
         self.file_link = file_link
