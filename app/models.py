@@ -7,7 +7,7 @@ class UploadedFiles(db.Model):
     Uploaded files table for data uploaded from the form.
     """
     id = db.Column(db.Integer, primary_key=True)
-    reg_id = db.Column(db.String, db.ForeignKey("registration.reg_id"))
+    reg_id = db.Column(db.String(10), db.ForeignKey("registration.reg_id"))
     file_link = db.Column(db.String)
     is_signature = db.Column(db.String)
 
@@ -26,7 +26,7 @@ class Registration(db.Model):
     """
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
-    reg_id = db.Column(db.String)
+    reg_id = db.Column(db.String(10))
     reservation_no = db.Column(db.String, default=None)
     arrival = db.Column(db.Date)
     departure = db.Column(db.Date)
@@ -61,7 +61,7 @@ class Guests(db.Model):
     Guest table
     """
     id = db.Column(db.Integer, primary_key=True)
-    reg_id = db.Column(db.String, db.ForeignKey("registration.reg_id"))
+    reg_id = db.Column(db.String(10), db.ForeignKey("registration.reg_id"))
     leading_guest = db.Column(db.Boolean, default=False)
     title = db.Column(db.String)
     guest_name = db.Column(db.String)
