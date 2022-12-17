@@ -7,7 +7,7 @@ from app.helpers.helpers import generate_session_id, save_uploaded_files_s3, con
     radio_choice_mapper, title_selection_mapper
 from app import db
 
-# for testing import
+# for testing
 import time
 
 
@@ -33,20 +33,24 @@ def form():
                        reg_card_form.email.data,
                        reg_card_form.tel.data,
                        reg_id)
-        db.session.add_all([reg, guest])
-        db.session.commit()
+        uploaded_file_objects = []
         for link in links:
-            files = UploadedFiles(link, False, reg_id)
-            db.session.add(files)
-            db.session.commit()
-        # end of DB code
+            uploaded_file_objects.append(UploadedFiles(link, is_signature=False, reg_id=reg_id))
+        db.session.add_all([reg, guest])
+        db.session.add_all(uploaded_file_objects)
+        db.session.commit()
         reg_card_form = RegCardForm(formdata=None)
         end_time = time.time()
         elapsed_time = end_time - start_time
-        print(elapsed_time)
         return render_template("form.html", website_metadata=website_metadata,
                                navbar_metadata=navbar_metadata,
                                reg_card_form=reg_card_form)
     return render_template("form.html", website_metadata=website_metadata,
                            navbar_metadata=navbar_metadata,
                            reg_card_form=reg_card_form)
+
+
+# for link in links:
+#     files = UploadedFiles(link, False, reg_id)
+#     db.session.add(files)
+#     db.session.commit()
