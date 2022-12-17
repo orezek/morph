@@ -62,7 +62,7 @@ class Guests(db.Model):
     """
     id = db.Column(db.Integer, primary_key=True)
     reg_id = db.Column(db.String, db.ForeignKey("registration.reg_id"))
-    leading_guest = db.Column(db.String)
+    leading_guest = db.Column(db.Boolean, default=False)
     title = db.Column(db.String)
     guest_name = db.Column(db.String)
     guest_surname = db.Column(db.String)

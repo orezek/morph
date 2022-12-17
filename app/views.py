@@ -22,7 +22,7 @@ def form():
                            reg_card_form.comment.data,
                            radio_choice_convertor(int(reg_card_form.radio.data)),
                            reg_id)
-        guest = Guests("False",
+        guest = Guests(False,
                        reg_card_form.title.data,
                        reg_card_form.guest_name.data,
                        reg_card_form.guest_surname.data,
