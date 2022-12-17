@@ -85,7 +85,7 @@ def convert_date(form_date: datetime.date) -> datetime.date:
     return date
 
 
-def radio_choice_convertor(form_field: int) -> str:
+def radio_choice_mapper(form_field: int) -> str:
     """
     Convert an integer value to string of choice
     :param form_field: int value from the form radio field

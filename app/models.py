@@ -27,7 +27,7 @@ class Registration(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     reg_id = db.Column(db.String)
-    reservation_no = db.Column(db.String)
+    reservation_no = db.Column(db.String, default=None)
     arrival = db.Column(db.Date)
     departure = db.Column(db.Date)
     reservation_comment = db.Column(db.String)

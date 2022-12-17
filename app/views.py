@@ -4,7 +4,7 @@ from app import application
 from flask import render_template, request, Blueprint
 from app.helpers.data_model import website_metadata, navbar_metadata
 from app.helpers.helpers import generate_session_id, save_uploaded_files, save_uploaded_files_s3, convert_date, \
-    radio_choice_convertor
+    radio_choice_mapper
 from app import db
 from datetime import datetime
 
@@ -20,7 +20,7 @@ def form():
         reg = Registration(convert_date(reg_card_form.arrival.data),
                            convert_date(reg_card_form.departure.data),
                            reg_card_form.comment.data,
-                           radio_choice_convertor(int(reg_card_form.radio.data)),
+                           radio_choice_mapper(int(reg_card_form.radio.data)),
                            reg_id)
         guest = Guests(False,
                        reg_card_form.title.data,
