@@ -102,6 +102,22 @@ def radio_choice_mapper(form_field: int) -> str:
     }
     return choices.get(form_field, "Invalid value")
 
+
+def title_selection_mapper(form_title_field: str) -> str:
+    """
+    Mapper that converts choice string selection into more human-readable form
+    :param form_title_field:
+    :return: string with correct title form
+    """
+    title = {
+        "mr": "Mr",
+        "mrs": "Mrs",
+        "ms": "Ms",
+        "mas": "Master",
+        "miss": "Miss"
+    }
+    return title.get(form_title_field, "No value chosen")
+
 # if __name__ == "__main__":
 # #     # list_buckets()
 

@@ -4,7 +4,7 @@ from app import application
 from flask import render_template, request, Blueprint
 from app.helpers.data_model import website_metadata, navbar_metadata
 from app.helpers.helpers import generate_session_id, save_uploaded_files, save_uploaded_files_s3, convert_date, \
-    radio_choice_mapper
+    radio_choice_mapper, title_selection_mapper
 from app import db
 from datetime import datetime
 
@@ -23,7 +23,7 @@ def form():
                            radio_choice_mapper(int(reg_card_form.radio.data)),
                            reg_id)
         guest = Guests(False,
-                       reg_card_form.title.data,
+                       title_selection_mapper(reg_card_form.title.data),
                        reg_card_form.guest_name.data,
                        reg_card_form.guest_surname.data,
                        reg_card_form.email.data,
