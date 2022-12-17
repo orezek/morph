@@ -46,10 +46,10 @@ def save_uploaded_files(request_obj, application_obj) -> list:
 
 
 # save files to AWS S3
-def upload_to_s3(file_obj, bucket_name: str, object_name: str):
+def upload_to_s3(file_obj, bucket_name: str, object_name: str, file_content_type: str):
     s3 = boto3.client("s3")
     try:
-        s3.upload_fileobj(file_obj, bucket_name, object_name)
+        s3.upload_fileobj(file_obj, bucket_name, object_name, ExtraArgs={'ContentType': file_content_type})
     except ClientError as e:
         print(e)
     except S3UploadFailedError as e:
@@ -65,11 +65,12 @@ def save_uploaded_files_s3(request_obj: flask.Request, reg_id: str) -> list:
     links = []
     for file in files:
         secured_file_name = secure_filename(file.filename)
+        file_content_type = str(file.content_type)
         prefix = reg_id
         file_link = BUCKET_URL + prefix + "/" + secured_file_name
         links.append(file_link)
         key = prefix + "/" + secured_file_name
-        upload_to_s3(file, BUCKET_NAME, key)
+        upload_to_s3(file, BUCKET_NAME, key, file_content_type)
     return links
 
 
