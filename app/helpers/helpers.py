@@ -119,6 +119,7 @@ def title_selection_mapper(form_title_field: str) -> str:
     }
     return title.get(form_title_field, "No value chosen")
 
-# if __name__ == "__main__":
-# #     # list_buckets()
+if __name__ == "__main__":
+     # list_buckets()
+    print(len("/Users/aldokezer/Development/morphe/app/static/uploaded_files/Monika_passport.jpeg"))
 

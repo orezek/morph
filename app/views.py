@@ -29,12 +29,12 @@ def form():
                        reg_card_form.email.data,
                        reg_card_form.tel.data,
                        reg_id)
-        for link in links:
-            files = UploadedFiles(link, "False", reg_id)
-            db.session.add(files)
-            db.session.commit()
         db.session.add_all([reg, guest])
         db.session.commit()
+        for link in links:
+            files = UploadedFiles(link, False, reg_id)
+            db.session.add(files)
+            db.session.commit()
         # end of DB code
         reg_card_form = RegCardForm(formdata=None)
         return render_template("form.html", website_metadata=website_metadata,

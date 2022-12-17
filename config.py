@@ -21,5 +21,5 @@ db_connection_mariadb = f"{db_engine_driver}://{user_name}:{password}@{db_url}:{
 class Config(object):
     SECRET_KEY = os.environ.get("SECRET_KEY") or "adfadfsfsfds"
     UPLOAD_FOLDER = UPLOAD_FOLDER
-    SQLALCHEMY_DATABASE_URI = db_connection_sqlite
+    SQLALCHEMY_DATABASE_URI = db_connection_mariadb
 
