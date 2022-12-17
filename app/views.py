@@ -1,6 +1,5 @@
 from app.models import Registration, Guests, UploadedFiles
 from app.forms import RegCardForm
-from app import application
 from flask import render_template, request, Blueprint
 from app.helpers.data_model import website_metadata, navbar_metadata
 from app.helpers.helpers import generate_session_id, save_uploaded_files_s3, convert_date, \
@@ -42,6 +41,7 @@ def form():
         reg_card_form = RegCardForm(formdata=None)
         end_time = time.time()
         elapsed_time = end_time - start_time
+        print(elapsed_time)
         return render_template("form.html", website_metadata=website_metadata,
                                navbar_metadata=navbar_metadata,
                                reg_card_form=reg_card_form)
@@ -49,8 +49,3 @@ def form():
                            navbar_metadata=navbar_metadata,
                            reg_card_form=reg_card_form)
 
-
-# for link in links:
-#     files = UploadedFiles(link, False, reg_id)
-#     db.session.add(files)
-#     db.session.commit()
