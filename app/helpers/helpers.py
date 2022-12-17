@@ -2,6 +2,7 @@ import hashlib
 import os
 import random
 import boto3
+import flask
 from botocore.exceptions import ClientError
 from s3transfer import S3UploadFailedError
 from werkzeug.utils import secure_filename
@@ -55,7 +56,7 @@ def upload_to_s3(file_obj, bucket_name: str, object_name: str):
         print(e)
 
 
-def save_uploaded_files_s3(request_obj, reg_id):
+def save_uploaded_files_s3(request_obj: flask.Request, reg_id: str) -> list:
     """
     save files to a local directory and use the filename from the user input to initiate upload to s3 bucket in AWS
     :return: list of file names with absolute path
@@ -67,7 +68,7 @@ def save_uploaded_files_s3(request_obj, reg_id):
         prefix = reg_id
         file_link = BUCKET_URL + prefix + "/" + secured_file_name
         links.append(file_link)
-        key = prefix + "/" + secure_filename(secured_file_name)
+        key = prefix + "/" + secured_file_name
         upload_to_s3(file, BUCKET_NAME, key)
     return links
 
@@ -125,6 +126,4 @@ def title_selection_mapper(form_title_field: str) -> str:
 # if __name__ == "__main__":
 #      # list_buckets()
 #     print(len("/Users/aldokezer/Development/morphe/app/static/uploaded_files/Monika_passport.jpeg"))
-#
-# https://aurora-form-hotel.s3.eu-central-1.amazonaws.com/202ec71f7/id_back.pdf
-# https://aurora-form-hotel.s3.eu-central-1.amazonaws.com/202ec71f7/id_back.pdf
+
