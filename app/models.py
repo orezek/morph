@@ -75,6 +75,12 @@ class UploadedFiles(db.Model):
     is_signature = db.Column(db.Boolean, default=False)
 
     def __init__(self, file_link, is_signature, reg_id):
+        """
+        Creates table object UploadedFiles in SQL database
+        :param file_link: string link to a file object
+        :param is_signature: boolean value indication whether the file object is signature
+        :param reg_id: unique string for give session
+        """
         self.file_link = file_link
         self.is_signature = is_signature
         self.reg_id = reg_id
