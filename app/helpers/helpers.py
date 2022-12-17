@@ -73,7 +73,7 @@ def save_uploaded_files_s3(request_obj: flask.Request, reg_id: str) -> list:
     return links
 
 
-def list_buckets() -> str:
+def list_buckets():
     s3 = boto3.client("s3")
     buckets = s3.list_buckets()
     for bucket in buckets["Buckets"]:
