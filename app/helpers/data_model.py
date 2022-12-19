@@ -6,7 +6,7 @@ from pprint import pprint
 website_metadata = {"contacts": "Contacts", "skills": "Skills", "certifications": "Certifications",
                     "education": "Education", "interests": "Interests", "profile_summary": "Profile Summary",
                     "work_experience": "Work Experience", "linkedin": "LinkedIn", "github": "Github",
-                    "about_me": "About Me", "page_title": "Rezek Oldrich CV"}
+                    "about_me": "About Me", "page_title": "DEMO HTML FORM"}
 
 # info about the page as a project
 footer_about_info = """The page is made up of standard HTML, CSS, some Javascript 
