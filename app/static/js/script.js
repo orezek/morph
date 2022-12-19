@@ -83,3 +83,6 @@ function skills(elements) {
 skills(skill_bar_elements)
 
 
+
+
+

@@ -13,7 +13,7 @@
             <h1 class="d-none d-sm-block" id="demo-title">DEMO FORM</h1>
             <h2>Registration Card</h2>
             <hr class="dashed">
-            <form class="signature-pad-form" method="POST" enctype="multipart/form-data">
+            <form class="signature-pad-form needs-validation" enctype="multipart/form-data" method="POST" novalidate>
                 {{ reg_card_form.hidden_tag() }}
                 <div class="row field">
                     <div class="col-md-2">
@@ -32,12 +32,13 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             {{ reg_card_form.guest_name.label }} {{ reg_card_form.guest_name(class="form-control") }}
+                            <div class="invalid-feedback">Please enter Your Name.</div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            {{ reg_card_form.guest_surname.label }} {{ reg_card_form.guest_surname(class="form-control")
-                            }}
+                            {{ reg_card_form.guest_surname.label }} {{ reg_card_form.guest_surname(class="form-control") }}
+                            <div class="invalid-feedback">Please enter Your Surname.</div>
                         </div>
                     </div>
                 </div>
@@ -45,11 +46,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ reg_card_form.email.label }} {{ reg_card_form.email(class="form-control") }}
+                            <div class="invalid-feedback">Please enter Your email.</div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ reg_card_form.tel.label }} {{ reg_card_form.tel(class="form-control") }}
+                            <div class="invalid-feedback">Format: +XXX XXX XXXXXX</div>
                         </div>
                     </div>
                 </div>
@@ -58,6 +61,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             {{ reg_card_form.arrival.label }} {{ reg_card_form.arrival(class="form-control") }}
+                            <div class="invalid-feedback">Please tell as when you arrive.</div>
                         </div>
                     </div>
                 </div>
@@ -65,6 +69,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             {{ reg_card_form.departure.label }} {{ reg_card_form.departure(class="form-control") }}
+                            <div class="invalid-feedback">Please tell as when you leave.</div>
                         </div>
                     </div>
                 </div>
@@ -81,6 +86,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             {{ reg_card_form.files.label }} {{ reg_card_form.files(class="form-control") }}
+                            <div class="invalid-feedback">Please enter documents.</div>
                         </div>
                     </div>
                 </div>
@@ -89,6 +95,7 @@
                     <div class="col-md-12">
                         <div class="form-group radio">
                             {{ reg_card_form.radio.label }} {{ reg_card_form.radio(class="form-control") }}
+                            <div class="invalid-feedback">Please tell where you heard from us.</div>
                         </div>
                     </div>
                 </div>
@@ -113,7 +120,7 @@
                 <div class="row field">
                     <div class="col-md-12">
                         <div class="form-group">
-                            {{ reg_card_form.submit(class="form-control btn btn-warning") }}
+                            {{ reg_card_form.submit(class="btn btn-warning btn-lg btn-block w-100") }}
                         </div>
                     </div>
                 </div>
@@ -122,18 +129,28 @@
     </div>
 </div>
 <script>
-/*
-simple fetch script to send data to the server over flask framework
-    let data = new FormData()
-    data.append('guest_name', 'olda123')
-    fetch({{url_for('form_blueprint.form') | tojson}}, {
-        "method": "POST",
-        "body": data
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
     })
-    .then((response) => response)
-    .then((data) => {
-    console.log('Success', data);
-    })
-*/
+})()
+
+
+
 </script>
 {% endblock %}
