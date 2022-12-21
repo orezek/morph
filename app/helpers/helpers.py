@@ -124,15 +124,6 @@ def title_selection_mapper(form_title_field: str) -> str:
     }
     return title.get(form_title_field, "No value chosen")
 
-#
-# guest = Guests(False,
-#                title_selection_mapper(reg_card_form.title.data),
-#                reg_card_form.guest_name.data,
-#                reg_card_form.guest_surname.data,
-#                reg_card_form.email.data,
-#                reg_card_form.tel.data,
-#                reg_id)
-
 
 def save_guest_data_from_form(request_obj, guest_model_obj, no_guests, reg_id) -> list:
     guests_to_save = []
