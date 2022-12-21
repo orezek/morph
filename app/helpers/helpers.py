@@ -21,9 +21,9 @@ def generate_session_id(form_object) -> str:
     """
     utc_time = datetime.utcnow()
     ran_int = random.randint(0, 1000)
-    salt0 = form_object.guest_name.data
-    salt1 = form_object.guest_surname.data
-    salt2 = form_object.email.data
+    salt0 = form_object.guest_name1.data
+    salt1 = form_object.guest_surname1.data
+    salt2 = form_object.email1.data
     m = f"{ran_int}, {salt0}, {salt1}, {salt2}, {utc_time}"
     m = bytes(str(m), 'utf-8')
     hash_message = hashlib.sha256(m).hexdigest()
@@ -123,6 +123,32 @@ def title_selection_mapper(form_title_field: str) -> str:
         "miss": "Miss"
     }
     return title.get(form_title_field, "No value chosen")
+
+#
+# guest = Guests(False,
+#                title_selection_mapper(reg_card_form.title.data),
+#                reg_card_form.guest_name.data,
+#                reg_card_form.guest_surname.data,
+#                reg_card_form.email.data,
+#                reg_card_form.tel.data,
+#                reg_id)
+
+
+def save_guest_data_from_form(request_obj, guest_model_obj, no_guests, reg_id) -> list:
+    guests_to_save = []
+    for number in range(1, no_guests+1):
+        is_leading_guest = True if number == 1 else False
+        guests_to_save.append(guest_model_obj(
+            is_leading_guest,
+            title_selection_mapper(request_obj.form[f"title{number}"]),
+            request_obj.form[f"guest_name{number}"],
+            request_obj.form[f"guest_surname{number}"],
+            request_obj.form[f"email{number}"],
+            request_obj.form[f"tel{number}"],
+            reg_id
+        ))
+    return guests_to_save
+
 
 # if __name__ == "__main__":
 #      # list_buckets()

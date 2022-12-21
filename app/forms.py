@@ -15,13 +15,13 @@ email_pattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,
 
 class RegCardForm(FlaskForm):
     no_guests = SelectField("Number of Guests", choices=[(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)])
-    title = SelectField("Title",
+    title1 = SelectField("Title",
                         choices=[("mr", "Mr"), ("mrs", "Mrs"), ("ms", "Ms"), ("mas", "Master"), ("miss", "Miss")])
-    guest_name = StringField("Guest Name", validators=[DataRequired()], render_kw={"placeholder": "First name"})
-    guest_surname = StringField("", validators=[DataRequired()], render_kw={"placeholder": "Last name"})
-    email = EmailField("Email", validators=[DataRequired()],
+    guest_name1 = StringField("Guest Name", validators=[DataRequired()], render_kw={"placeholder": "First name"})
+    guest_surname1 = StringField("", validators=[DataRequired()], render_kw={"placeholder": "Last name"})
+    email1 = EmailField("Email", validators=[DataRequired()],
                        render_kw={"placeholder": "Enter your email", "pattern": email_pattern})
-    tel = TelField("Phone Number", validators=[DataRequired()],
+    tel1 = TelField("Phone Number", validators=[DataRequired()],
                    render_kw={"placeholder": "Enter your phone number",
                               "pattern": "^\+?[0-9\s]*$", "minlength": "12", "maxlength": "20"})
     arrival = DateField("Arrival", validators=[DataRequired()])

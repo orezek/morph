@@ -62,7 +62,7 @@ class Guests(db.Model):
 
     def __repr__(self):
         return f"{self.leading_guest}, {self.title}, {self.guest_name}," \
-               f"{self.guest_surname}, {self.guest_email}, {self.guest_phone}"
+               f"{self.guest_surname}, {self.guest_email}, {self.guest_phone}, {self.reg_id}"
 
 
 class UploadedFiles(db.Model):
