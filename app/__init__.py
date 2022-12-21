@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_debugtoolbar import DebugToolbarExtension
 from config import Config
 
 # Set models
@@ -16,3 +16,6 @@ Migrate(application, db, render_as_batch=True)
 
 from app.views import form_blueprint
 application.register_blueprint(form_blueprint, url_prefix="/")
+
+# Debug Toolbar
+toolbar = DebugToolbarExtension(application)
