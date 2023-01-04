@@ -58,8 +58,8 @@ def upload_to_s3(file_obj, bucket_name: str, object_name: str, file_content_type
 
 def save_uploaded_files_s3(request_obj: flask.Request, reg_id: str) -> list:
     """
-    save files to a local directory and use the filename from the user input to initiate upload to s3 bucket in AWS
-    :return: list of file names with absolute path
+    save files to a S3 and generate a list of links to the files in AWS
+    :return: list of file names with absolute path to S3 bucket
     """
     files = request_obj.files.getlist("files")
     links = []
