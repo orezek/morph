@@ -56,7 +56,7 @@ def upload_to_s3(file_obj, bucket_name: str, object_name: str, file_content_type
         print(e)
 
 
-def save_uploaded_files_s3(request_obj: flask.Request, reg_id: str) -> list:
+def save_uploaded_files_to_s3(request_obj: flask.Request, reg_id: str) -> list:
     """
     save files to a S3 and generate a list of links to the files in AWS
     :return: list of file names with absolute path to S3 bucket
@@ -111,9 +111,9 @@ def radio_choice_mapper(form_field: int) -> str:
 
 def title_selection_mapper(form_title_field: str) -> str:
     """
-    Mapper that converts choice string selection into more human-readable form
-    :param form_title_field:
-    :return: string with correct title form
+    Mapper that converts choice string selection into more human-readable form.
+    :param form_title_field: Form data from title field.
+    :return: String with well-formed title.
     """
     title = {
         "mr": "Mr",
