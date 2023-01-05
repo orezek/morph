@@ -125,7 +125,16 @@ def title_selection_mapper(form_title_field: str) -> str:
     return title.get(form_title_field, "No value chosen")
 
 
-def save_guest_data_from_form(request_obj, guest_model_obj, no_guests, reg_id) -> list:
+def create_guest_objects_from_form_data(request_obj, guest_model_obj, no_guests, reg_id) -> list:
+    """
+        Create a list of `guest_model_obj` instances from form data in a request object.
+    :param request_obj: An object representing a request, from which form data will be extracted.
+    :param guest_model_obj: A class representing a guest object.
+    :param no_guests: The number of guests for which data is included in the form.
+    :param reg_id: A unique session ID generated for each session.
+    :return:
+        list: A list of `guest_model_obj` instances created from the form data.
+    """
     guests_to_save = []
     for number in range(1, no_guests+1):
         is_leading_guest = True if number == 1 else False
