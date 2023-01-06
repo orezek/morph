@@ -47,6 +47,14 @@ def save_uploaded_files(request_obj, application_obj) -> list:
 
 # save files to AWS S3
 def upload_to_s3(file_obj, bucket_name: str, object_name: str, file_content_type: str):
+    """
+    Saves data to S3 bucket in AWS
+    :param file_obj: byte stream file object
+    :param bucket_name: name of the AWS S3 bucket
+    :param object_name: name of the file
+    :param file_content_type: content type of the file
+    :return: None
+    """
     s3 = boto3.client("s3")
     try:
         s3.upload_fileobj(file_obj, bucket_name, object_name, ExtraArgs={'ContentType': file_content_type})
@@ -72,6 +80,12 @@ def save_uploaded_files_to_s3(request_obj: flask.Request, prefix: str) -> list:
 
 
 def generate_s3_file_links(request_obj: flask.Request, prefix: str) -> list:
+    """
+    Generates html link for each uploaded file to S3
+    :param request_obj: Flask request object
+    :param prefix: unique string to group files by common identifier
+    :return: list of links
+    """
     files = request_obj.files.getlist("files")
     links = list()
     for file in files:
@@ -82,6 +96,13 @@ def generate_s3_file_links(request_obj: flask.Request, prefix: str) -> list:
 
 
 def create_uploaded_file_objects_from_form_data(request_obj, uploaded_files_model, request_id) -> list:
+    """
+    Creates list of uploaded_file instances and adds them into a list
+    :param request_obj: Flask request object
+    :param uploaded_files_model: class for DB model UploadedFiles
+    :param request_id: unique string for representing each request
+    :return: list of instances of UploadedFiles class
+    """
     uploaded_files_model_object_list = []
     for link in generate_s3_file_links(request_obj=request_obj, prefix=request_id):
         uploaded_files_model_object_list.append(uploaded_files_model(link, is_signature=False, reg_id=request_id))
@@ -89,6 +110,10 @@ def create_uploaded_file_objects_from_form_data(request_obj, uploaded_files_mode
 
 
 def list_buckets():
+    """
+    Prints list of buckets from my AWS account
+    :return:
+    """
     s3 = boto3.client("s3")
     buckets = s3.list_buckets()
     for bucket in buckets["Buckets"]:
