@@ -15,8 +15,8 @@ BUCKET_URL = f"https://{BUCKET_NAME}.s3.eu-central-1.amazonaws.com/"
 # Generates a random unique session string. Is using SHA256
 def generate_session_id(form_object) -> str:
     """
-    Insert form object to get user data in order to generate a salt for the hash function
-    :param form_object:
+    Function that generates a random string of length 10 chars for identifying each post request.
+    :param form_object: form object for using data from the form to generate the hash
     :return: Hexadecimal unique string
     """
     utc_time = datetime.utcnow()
