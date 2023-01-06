@@ -56,22 +56,19 @@ def upload_to_s3(file_obj, bucket_name: str, object_name: str, file_content_type
         print(e)
 
 
-def save_uploaded_files_to_s3(request_obj: flask.Request, reg_id: str) -> list:
+def save_uploaded_files_to_s3(request_obj: flask.Request, prefix: str) -> list:
     """
-    save files to a S3 and generate a list of links to the files in AWS
+    save files to a S3
+    :param request_obj Flask reqeust object
+    :param prefix Unique request or session id used for generating prefixes for S3 to group files.
     :return: list of file names with absolute path to S3 bucket
     """
     files = request_obj.files.getlist("files")
-    links = []
     for file in files:
         secured_file_name = secure_filename(file.filename)
         file_content_type = str(file.content_type)
-        prefix = reg_id
-        file_link = BUCKET_URL + prefix + "/" + secured_file_name
-        links.append(file_link)
         key = prefix + "/" + secured_file_name
         upload_to_s3(file, BUCKET_NAME, key, file_content_type)
-    return links
 
 
 def generate_s3_file_links(request_obj: flask.Request, prefix: str) -> list:
