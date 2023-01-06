@@ -74,6 +74,16 @@ def save_uploaded_files_to_s3(request_obj: flask.Request, reg_id: str) -> list:
     return links
 
 
+def generate_s3_file_links(request_obj: flask.Request, prefix: str) -> list:
+    files = request_obj.files.getlist("files")
+    links = list()
+    for file in files:
+        secured_file_name = secure_filename(file.filename)
+        file_link = BUCKET_URL + prefix + "/" + secured_file_name
+        links.append(file_link)
+    return links
+
+
 def list_buckets():
     s3 = boto3.client("s3")
     buckets = s3.list_buckets()
