@@ -84,6 +84,13 @@ def generate_s3_file_links(request_obj: flask.Request, prefix: str) -> list:
     return links
 
 
+def create_uploaded_file_objects_from_form_data(request_obj, uploaded_files_model, request_id) -> list:
+    uploaded_files_model_object_list = []
+    for link in generate_s3_file_links(request_obj=request_obj, prefix=request_id):
+        uploaded_files_model_object_list.append(uploaded_files_model(link, is_signature=False, reg_id=request_id))
+    return uploaded_files_model_object_list
+
+
 def list_buckets():
     s3 = boto3.client("s3")
     buckets = s3.list_buckets()
@@ -158,14 +165,6 @@ def create_guest_objects_from_form_data(request_obj, guest_model_obj, no_guests,
             reg_id
         ))
     return guests_to_save
-
-
-def create_uploaded_files_objects_from_form_data(request_obj, uploaded_files_model, request_id) -> list:
-    uploaded_files_model_object_list = []
-    for link in generate_s3_file_links(request_obj=request_obj, prefix=request_id):
-        uploaded_files_model_object_list.append(uploaded_files_model(link, is_signature=False, reg_id=request_id))
-    return uploaded_files_model_object_list
-
 
 # if __name__ == "__main__":
 #      # list_buckets()
