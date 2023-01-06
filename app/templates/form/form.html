@@ -13,7 +13,7 @@
             <h1 class="d-none d-sm-block" id="demo-title">DEMO FORM</h1>
             <h2>Registration Card</h2>
             <hr class="dashed">
-            <form class="signature-pad-form" method="POST" enctype="multipart/form-data">
+            <form class="signature-pad-form needs-validation" enctype="multipart/form-data" method="POST" novalidate>
                 {{ reg_card_form.hidden_tag() }}
                 <div class="row field">
                     <div class="col-md-2">
@@ -26,38 +26,43 @@
                 <div class="row field">
                     <div class="col-md-4">
                         <div class="form-group">
-                            {{ reg_card_form.title.label }} {{ reg_card_form.title(class="form-control") }}
+                            {{ reg_card_form.title1.label }} {{ reg_card_form.title1(class="form-control") }}
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            {{ reg_card_form.guest_name.label }} {{ reg_card_form.guest_name(class="form-control") }}
+                            {{ reg_card_form.guest_name1.label }} {{ reg_card_form.guest_name1(class="form-control") }}
+                            <div class="invalid-feedback">Please enter Your Name.</div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            {{ reg_card_form.guest_surname.label }} {{ reg_card_form.guest_surname(class="form-control")
-                            }}
+                            {{ reg_card_form.guest_surname1.label }} {{ reg_card_form.guest_surname1(class="form-control") }}
+                            <div class="invalid-feedback">Please enter Your Surname.</div>
                         </div>
                     </div>
                 </div>
                 <div class="row field">
                     <div class="col-md-6">
                         <div class="form-group">
-                            {{ reg_card_form.email.label }} {{ reg_card_form.email(class="form-control") }}
+                            {{ reg_card_form.email1.label }} {{ reg_card_form.email1(class="form-control") }}
+                            <div class="invalid-feedback">Please enter Your email.</div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            {{ reg_card_form.tel.label }} {{ reg_card_form.tel(class="form-control") }}
+                            {{ reg_card_form.tel1.label }} {{ reg_card_form.tel1(class="form-control") }}
+                            <div class="invalid-feedback">Format: +XXX XXX XXXXXX</div>
                         </div>
                     </div>
                 </div>
+                <div id="guestFields"></div>
                 <h2>Journey Details</h2>
                 <div class="row field">
                     <div class="col-md-12">
                         <div class="form-group">
                             {{ reg_card_form.arrival.label }} {{ reg_card_form.arrival(class="form-control") }}
+                            <div class="invalid-feedback">Please tell as when you arrive.</div>
                         </div>
                     </div>
                 </div>
@@ -65,6 +70,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             {{ reg_card_form.departure.label }} {{ reg_card_form.departure(class="form-control") }}
+                            <div class="invalid-feedback">Please tell as when you leave.</div>
                         </div>
                     </div>
                 </div>
@@ -81,6 +87,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             {{ reg_card_form.files.label }} {{ reg_card_form.files(class="form-control") }}
+                            <div class="invalid-feedback">Please enter documents.</div>
                         </div>
                     </div>
                 </div>
@@ -89,6 +96,7 @@
                     <div class="col-md-12">
                         <div class="form-group radio">
                             {{ reg_card_form.radio.label }} {{ reg_card_form.radio(class="form-control") }}
+                            <div class="invalid-feedback">Please tell where you heard from us.</div>
                         </div>
                     </div>
                 </div>
@@ -113,7 +121,7 @@
                 <div class="row field">
                     <div class="col-md-12">
                         <div class="form-group">
-                            {{ reg_card_form.submit(class="form-control btn btn-warning") }}
+                            {{ reg_card_form.submit(class="btn btn-warning btn-lg btn-block w-100") }}
                         </div>
                     </div>
                 </div>
@@ -122,18 +130,39 @@
     </div>
 </div>
 <script>
-/*
-simple fetch script to send data to the server over flask framework
-    let data = new FormData()
-    data.append('guest_name', 'olda123')
-    fetch({{url_for('form') | tojson}}, {
-        "method": "POST",
-        "body": data
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
     })
-    .then((response) => response)
-    .then((data) => {
-    console.log('Success', data);
-    })
-*/
+})()
+
+
+document.getElementById('no_guests').addEventListener('change', function() {
+    var value = this.value;
+    var guestFields = document.getElementById('guestFields');
+    guestFields.innerHTML = '';
+    var fields = '';
+    for (var i = 2; i <= value; i++) {
+        guestFields.innerHTML += '<div class="row field"><h3>Guest No. '+ i +'</h3><div class="col-md-4"><label for="title' + i + '">Title:</label><select class="form-control" id="title' + i + '" name="title' + i + '"><option value="mr">Mr</option><option value="mrs">Mrs</option><option value="ms">Ms</option><option value="mas">Master</option><option value="miss">Miss</option></select></div><div class="col-md-4"><label for="guest_ame' + i + '">Guest Name</label><input class="form-control" type="text" id="guest_name' + i + '" name="guest_name' + i + '" placeholder="First name" required></div><div class="col-md-4"><label for="guest_surname' + i + '">Guest Surname</label><input class="form-control" type="text" id="guest_surname' + i + '" name="guest_surname' + i + '" placeholder="Last name" required ></div></div><div class="row field"><div class="col-md-6"><div class="form-group"><label for="email' + i + '">Email</label><input class="form-control" type="email" id="email' + i + '" name="email' + i + '" placeholder="Please enter your email" required ></div></div><div class="col-md-6"><div class="form-group"><label for="tel' + i + '">Phone Number</label><input class="form-control" type="tel" id="tel' + i + '" name="tel' + i + '" placeholder="Enter your phone number" required ></div></div></div>';
+    }
+    console.log(guestFields)
+});
+
+
 </script>
 {% endblock %}
