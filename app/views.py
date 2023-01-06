@@ -12,8 +12,17 @@ import time
 form_blueprint = Blueprint("form_blueprint", __name__, template_folder="templates/form")
 
 
-@form_blueprint.route("/", methods=["GET", "POST"])
-def form():
+# GET implementation
+@form_blueprint.route("/", methods=["GET"])
+def get_form():
+    reg_card_form = RegCardForm()
+    return render_template("form.html", website_metadata=website_metadata, navbar_metadata=navbar_metadata,
+                           reg_card_form=reg_card_form)
+
+
+# POST implementation
+@form_blueprint.route("/", methods=["POST"])
+def post_form():
     reg_card_form = RegCardForm()
     if reg_card_form.validate_on_submit():
         start_time = time.perf_counter()
@@ -40,10 +49,4 @@ def form():
         return render_template("form.html",
                                website_metadata=website_metadata,
                                navbar_metadata=navbar_metadata,
-                               reg_card_form=reg_card_form
-                               )
-    return render_template("form.html",
-                           website_metadata=website_metadata,
-                           navbar_metadata=navbar_metadata,
-                           reg_card_form=reg_card_form
-                           )
+                               reg_card_form=reg_card_form)
