@@ -21,14 +21,13 @@ def form():
         request_id = generate_session_id(reg_card_form)
         save_uploaded_files_to_s3(request, request_id)  # save uploaded files to S3 and return links
         print(generate_s3_file_links(request_obj=request, prefix=request_id))
-        reg = Registration(convert_date(reg_card_form.arrival.data),
+        registration_model = Registration(convert_date(reg_card_form.arrival.data),
                            convert_date(reg_card_form.departure.data),
                            reg_card_form.comment.data,
                            radio_choice_mapper(int(reg_card_form.radio.data)),
                            request_id)
-        db.session.add_all([reg])
-        db.session.add_all(
-            create_guest_objects_from_form_data(request, Guests, int(reg_card_form.no_guests.data), reg_id=request_id))
+        db.session.add_all([registration_model])
+        db.session.add_all(create_guest_objects_from_form_data(request, Guests, int(reg_card_form.no_guests.data), reg_id=request_id))
         db.session.add_all(create_uploaded_file_objects_from_form_data(request_obj=request, uploaded_files_model=UploadedFiles, request_id=request_id))
         db.session.commit()
         reg_card_form = RegCardForm(formdata=None)
