@@ -16,7 +16,7 @@ form_blueprint = Blueprint("form_blueprint", __name__, template_folder="template
 def form():
     reg_card_form = RegCardForm()
     if reg_card_form.validate_on_submit():
-        start_time = time.time()
+        start_time = time.perf_counter()
         request_id = generate_session_id(reg_card_form)
         save_uploaded_files_to_s3(request, request_id)
         registration_model = Registration(arrival=convert_date(reg_card_form.arrival.data),
@@ -35,9 +35,8 @@ def form():
                                                         request_id=request_id))
         db.session.commit()
         reg_card_form = RegCardForm(formdata=None)
-        end_time = time.time()
-        elapsed_time = end_time - start_time
-        print(elapsed_time)
+        end_time = time.perf_counter()
+        print(end_time - start_time)
         return render_template("form.html",
                                website_metadata=website_metadata,
                                navbar_metadata=navbar_metadata,
