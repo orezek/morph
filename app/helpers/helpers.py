@@ -175,7 +175,7 @@ def create_guest_objects_from_form_data(request_obj, guest_model_obj, no_guests,
         list: A list of `guest_model_obj` instances created from the form data.
     """
     guests_to_save = []
-    for number in range(1, no_guests+1):
+    for number in range(1, no_guests + 1):
         is_leading_guest = True if number == 1 else False
         guests_to_save.append(guest_model_obj(
             is_leading_guest,
@@ -188,7 +188,4 @@ def create_guest_objects_from_form_data(request_obj, guest_model_obj, no_guests,
         ))
     return guests_to_save
 
-# if __name__ == "__main__":
-#      # list_buckets()
-#     print(len("/Users/aldokezer/Development/morphe/app/static/uploaded_files/Monika_passport.jpeg"))
 
