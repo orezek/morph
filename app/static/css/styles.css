@@ -1,34 +1,30 @@
 .contacts {
-  margin: auto;
-  margin-top: 10%;
-  width: 80%;
+    margin: 10% auto auto;
+    width: 80%;
   padding: 10px;
   text-decoration: none;
 }
 
 .icon {
     width: 2em;
-    height 2em;
+    height: 2em;
 }
 
 .skills {
-  margin: auto;
-  margin-top: 5%;
-  width: 80%;
+    margin: 5% auto auto;
+    width: 80%;
   padding: 10px;
 }
 
 .certification {
-  margin: auto;
-  margin-top: 5%;
-  width: 80%;
+    margin: 5% auto auto;
+    width: 80%;
   padding: 10px;
 }
 
 .education {
-  margin: auto;
-  margin-top: 5%;
-  width: 80%;
+    margin: 5% auto auto;
+    width: 80%;
   padding: 10px;
   font-size: 1.1em;
   word-spacing: 0.1em;
@@ -71,8 +67,7 @@
 }
 
 .profile_summary {
-    padding: 2%;
-    padding-right: 5%;
+    padding: 2% 5% 2% 2%;
     margin-top: 2%;
 
 }
@@ -92,8 +87,7 @@
 }
 
 .work_experience {
-    padding: 2%;
-    padding-right: 5%;
+    padding: 2% 5% 2% 2%;
     margin-top: 2%;
 }
 
@@ -233,7 +227,7 @@ padding-bottom: 50px;
 btn {
     color: black;
     background-color: #FCF8E8;
-    border-color: #FCF8E8;
+    border-color: #FCF8E8;}
 
 btn:link, #btn:visited, #btn:hover, #btn:active {
     background-color: #FCF8E8;
