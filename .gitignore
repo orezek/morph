@@ -5,4 +5,4 @@ __pycache__/
 unused-code
 uploaded_files
 migrations
-app/data.sqlite
+app/testing.js
