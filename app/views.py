@@ -16,7 +16,9 @@ form_blueprint = Blueprint("form_blueprint", __name__, template_folder="template
 @form_blueprint.route("/", methods=["GET"])
 def get_form():
     reg_card_form = RegCardForm()
-    return render_template("form.html", website_metadata=website_metadata, navbar_metadata=navbar_metadata,
+    return render_template("form.html",
+                           website_metadata=website_metadata,
+                           navbar_metadata=navbar_metadata,
                            reg_card_form=reg_card_form)
 
 
