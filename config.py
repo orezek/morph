@@ -4,6 +4,7 @@ import os
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, "app/static", "uploaded_files")
 
+# TODO: Change the secrets into environmental parameters or use AWS parameter store etc.
 # DB engine and connection setup - make ENV or AWS Param. store
 user_name = "admin"
 password = "Mirodinga1"
