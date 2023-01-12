@@ -6,3 +6,5 @@ unused-code
 uploaded_files
 migrations
 app/testing.js
+secrets.py
+app/__init__.pyc
