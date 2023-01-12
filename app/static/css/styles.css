@@ -1,22 +1,29 @@
+/* 115, 100, 87*/
+
+
 body {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Dosis', sans-serif;
+    color: rgb(115 100 87);
     background-image: url("../assets/background.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
+.form-control {
+    color: rgb(115 100 87);
+}
 
 #footer {
     height: 120px;
     background-color: #51557E;
-    color: white;
+    color: rgb(115 100 87);
 
 }
 
 #navbar {
     background-color: #51557E;
-    color: white;
+    color: rgb(115 100 87);
 }
 
 #navbar-text {
@@ -37,10 +44,16 @@ a:hover, a:visited, a:link, a:active {
 
 .field {
     padding-bottom: 3%;
+    color: rgb(115 100 87);
+}
+
+input::placeholder {
+  color: rgb(115 100 87);
 }
 
 .radio li {
     list-style-type: none;
+    color: rgb(115 100 87);
 }
 
 .term-text {
@@ -53,7 +66,7 @@ a:hover, a:visited, a:link, a:active {
 
 #submit {
     height: 100px;
-    color: #51557E;
+    color: rgb(115 100 87);
     font-size: 2em;
 }
 
