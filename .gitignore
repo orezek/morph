@@ -5,6 +5,6 @@ __pycache__/
 unused-code
 uploaded_files
 migrations
-app/testing.js
-secrets.py
+app/static/js/testing.js
+app_confing_secrets.py
 app/__init__.pyc
