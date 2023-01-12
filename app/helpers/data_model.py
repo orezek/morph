@@ -19,6 +19,7 @@ footer_data = {"footer_about_info": footer_about_info}
 # text for the navbar
 aws_logo_link = "https://d0.awsstatic.com/logos/powered-by-aws-white.png"
 aws_link = "https://aws.amazon.com/what-is-cloud-computing"
-navbar_metadata = {"aws_logo": aws_logo_link, "aws_link": aws_link}
+or_page_link = "https://www.rezek.eu/"
+navbar_metadata = {"aws_logo": aws_logo_link, "aws_link": aws_link, "or_page_link": or_page_link}
 
 

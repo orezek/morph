@@ -28,9 +28,10 @@
     <div class="row" id="navbar-wrapper">
         <nav class="navbar navbar-expand-sm navbar-dark" id="navbar">
             <div class="container">
-                <a class="navbar-brand d-none d-sm-block" id="navbar-text" target="_blank" href="">OR</a>
+                <a class="navbar-brand d-none d-sm-block" id="navbar-text" target="_blank"
+                   href="{{ navbar_metadata['or_page_link'] }}">OR</a>
                 <a class="navbar-brand" target="_blank" href="{{ navbar_metadata['aws_link'] }}">
-                    <img class="d-none d-sm-block" id="aws-logo"  alt="Powered by AWS Cloud Computing"
+                    <img class="d-none d-sm-block" id="aws-logo" alt="Powered by AWS Cloud Computing"
                          src="{{ navbar_metadata['aws_logo'] }}"></a>
             </div>
         </nav>
