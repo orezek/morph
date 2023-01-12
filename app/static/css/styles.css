@@ -1,35 +1,34 @@
 body {
-font-family: 'Roboto Condensed', sans-serif;
-background-image: url("../assets/background.jpeg");
-background-repeat: no-repeat;
-background-size: cover;
-background-position: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    background-image: url("../assets/background.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 
 #footer {
-height: 120px;
-background-color: #51557E;
-color: white;
+    height: 120px;
+    background-color: #51557E;
+    color: white;
 
 }
 
 #navbar {
-background-color: #51557E;
-color: white;
+    background-color: #51557E;
+    color: white;
 }
 
 #navbar-text {
-font-size: 30px;
+    font-size: 30px;
 }
 
 #aws-logo {
-width: 100px;
+    width: 100px;
 }
 
 
-a:hover, a:visited, a:link, a:active
-{
+a:hover, a:visited, a:link, a:active {
     text-decoration: none;
 }
 
@@ -37,29 +36,29 @@ a:hover, a:visited, a:link, a:active
 /* CSS for form page*/
 
 .field {
-padding-bottom: 3%;
+    padding-bottom: 3%;
 }
 
 .radio li {
-list-style-type: none;
+    list-style-type: none;
 }
 
 .term-text {
-font-size: 0.7em;
+    font-size: 0.7em;
 }
 
 #main-form-wrapper {
-background-color: white;
+    background-color: white;
 }
 
 #submit {
-height: 100px;
-color: #51557E;
-font-size: 2em;
+    height: 100px;
+    color: #51557E;
+    font-size: 2em;
 }
 
 #demo-title {
-padding-bottom: 50px;
+    padding-bottom: 50px;
 }
 
 
