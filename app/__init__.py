@@ -18,4 +18,4 @@ from app.views import form_blueprint
 application.register_blueprint(form_blueprint, url_prefix="/")
 
 # Debug Toolbar
-toolbar = DebugToolbarExtension(application)
+#toolbar = DebugToolbarExtension(application)

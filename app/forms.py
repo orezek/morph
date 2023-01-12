@@ -13,6 +13,7 @@ radio_choices = [(1, "Friend or family member"), (2, "Travel agency or similar")
 email_pattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
 
 
+# TODO set file upload size limit
 class RegCardForm(FlaskForm):
     no_guests = SelectField("Number of Guests", choices=[(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)])
     title1 = SelectField("Title",
