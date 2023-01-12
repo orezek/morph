@@ -29,6 +29,7 @@ def post_form():
     if reg_card_form.validate_on_submit():
         start_time = time.perf_counter()
         request_id = generate_session_id(reg_card_form)
+        # TODO Check the time between uploading the files to a local directory and uploading the files to S3.
         save_uploaded_files_to_s3(request, request_id)
         registration_table = [Registration(arrival=convert_date(reg_card_form.arrival.data),
                                            departure=convert_date(reg_card_form.departure.data),
@@ -52,8 +53,8 @@ def post_form():
         reg_card_form = RegCardForm(formdata=None)
         end_time = time.perf_counter()
         print(end_time - start_time)
-        # TODO Create a mechanism to handle the submission, show messages and redirect to a new page.
-        # In the other page redirect after some specific time back to the form or the main page.
+        # TODO Create a mechanism to handle the submission, show messages and redirect to a new page. In the other
+        #  page redirect after some specific time back to the form or the main page.
         return redirect("success")
         # return render_template("form.html",
         #                        website_metadata=website_metadata,
