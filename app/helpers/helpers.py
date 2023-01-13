@@ -31,9 +31,11 @@ def generate_session_id(form_object) -> str:
 
 
 # helper function to save files from the form
-def save_uploaded_files(request_obj, application_obj) -> list:
+def save_uploaded_files(request_obj: flask.Request, application_obj: flask) -> list:
     """
-    saves files to a local directory and uses the filename from the user input
+    Saves the files to a local directory and uses the filename from the user input.
+    :param request_obj: Flask request object that holds form file data.
+    :param application_obj: Flask application object as
     :return: list of file names with absolute path
     """
     files = request_obj.files.getlist("files")

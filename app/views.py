@@ -3,7 +3,8 @@ from app.forms import RegCardForm
 from flask import render_template, request, Blueprint, redirect
 from app.helpers.data_model import website_metadata, navbar_metadata
 from app.helpers.helpers import generate_session_id, save_uploaded_files_to_s3, convert_date, \
-    radio_choice_mapper, create_guest_objects_from_form_data, create_uploaded_file_objects_from_form_data
+    radio_choice_mapper, create_guest_objects_from_form_data, create_uploaded_file_objects_from_form_data,\
+    save_uploaded_files
 from app import db
 
 # for testing
@@ -55,13 +56,13 @@ def post_form():
         print(end_time - start_time)
         # TODO Create a mechanism to handle the submission, show messages and redirect to a new page. In the other
         #  page redirect after some specific time back to the form or the main page.
-        return redirect("success")
-        # return render_template("form.html",
-        #                        website_metadata=website_metadata,
-        #                        navbar_metadata=navbar_metadata,
-        #                        reg_card_form=reg_card_form)
+        # return redirect("success")
+        return render_template("form.html",
+                               website_metadata=website_metadata,
+                               navbar_metadata=navbar_metadata,
+                               reg_card_form=reg_card_form)
 
 
-@form_blueprint.route("/success")
-def success():
-    return "The form submission was successful. Thank you"
+# @form_blueprint.route("/success")
+# def success():
+#     return "The form submission was successful. Thank you"
