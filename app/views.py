@@ -30,7 +30,9 @@ def post_form():
     if reg_card_form.validate_on_submit():
         start_time = time.perf_counter()
         request_id = generate_session_id(reg_card_form)
-        # TODO Check the time between uploading the files to a local directory and uploading the files to S3.
+        # TODO Check the time between uploading the files to a local directory and uploading the files to S3. I need
+        #  to test it when the form is not running locally. But I can expect that it takes 2x time to submit the form
+        #  then now.
         save_uploaded_files_to_s3(request, request_id)
         registration_table = [Registration(arrival=convert_date(reg_card_form.arrival.data),
                                            departure=convert_date(reg_card_form.departure.data),

@@ -32,10 +32,13 @@ tel_kw = {"placeholder": "Enter your phone number", "pattern": "^\+?[0-9\s]*$", 
 # email field additional kw parameters to for better styling of the field
 email_kw = {"placeholder": "Enter your email", "pattern": email_pattern}
 
+# guest_name field additional kw parameters to for better styling of the field
 guest_name_kw = {"placeholder": "First name"}
 
+# surname_field field additional kw parameters to for better styling of the field
 surname_kw = {"placeholder": "Last name"}
 
+# radio_field field additional kw parameters to for better styling of the field
 radio_kw = {"class": "form-check-input"}
 
 
