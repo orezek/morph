@@ -9,3 +9,4 @@ app/static/js/testing.js
 app_confing_secrets.py
 app/__init__.pyc
 Dockerfile
+.dockerignore
