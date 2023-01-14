@@ -15,7 +15,7 @@ body {
 }
 
 #footer {
-    height: 120px;
+    height: 4rem;
     background-color: #51557E;
     color: rgb(115 100 87);
 
@@ -65,7 +65,7 @@ input::placeholder {
 }
 
 #submit {
-    height: 100px;
+    height: 10%;
     color: rgb(115 100 87);
     font-size: 2em;
 }
