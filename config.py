@@ -30,4 +30,4 @@ class Config(object):
     DEBUG_TB_ENABLED = True
     DEBUG = True
     HOST = "0.0.0.0"
-    PORT = "5001"
+    PORT = "5000"
