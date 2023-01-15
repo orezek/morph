@@ -3,6 +3,10 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_debugtoolbar import DebugToolbarExtension
 from config import Config
+from dotenv import load_dotenv
+
+# Load env variables from .env file
+load_dotenv()
 
 # Set models
 db = SQLAlchemy()

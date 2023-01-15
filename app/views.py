@@ -3,8 +3,7 @@ from app.forms import RegCardForm
 from flask import render_template, request, Blueprint, redirect
 from app.helpers.data_model import website_metadata, navbar_metadata
 from app.helpers.helpers import generate_session_id, save_uploaded_files_to_s3, convert_date, \
-    radio_choice_mapper, create_guest_objects_from_form_data, create_uploaded_file_objects_from_form_data,\
-    save_uploaded_files
+    radio_choice_mapper, create_guest_objects_from_form_data, create_uploaded_file_objects_from_form_data
 from app import db
 
 # for testing
