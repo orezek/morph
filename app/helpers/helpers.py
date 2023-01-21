@@ -57,7 +57,6 @@ def upload_to_s3(file_obj, bucket_name: str, object_name: str, file_content_type
     :param file_content_type: content type of the file
     :return: None
     """
-    # FIXME: Change AWS authentication credentials.
     s3 = boto3.client("s3")
     try:
         s3.upload_fileobj(file_obj, bucket_name, object_name, ExtraArgs={'ContentType': file_content_type})

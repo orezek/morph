@@ -1,12 +1,11 @@
 import os
-import app_confing_secrets as secret
+from dotenv import load_dotenv
+load_dotenv()
 
 # Root project and upload directory location
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, "app/static", "uploaded_files")
 
-# TODO: Change the secrets into environmental variables or use AWS parameter store etc.
-# DB engine and connection setup - make ENV or AWS Param. store
 
 user_name = os.environ["DB_USER_NAME"]
 password = os.environ["DB_PASSWORD"]
