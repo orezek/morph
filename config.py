@@ -26,5 +26,4 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = db_connection_mariadb
     DEBUG_TB_ENABLED = True
     DEBUG = True
-    HOST = "0.0.0.0"
-    PORT = "5000"
+
