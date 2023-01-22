@@ -1,5 +1,7 @@
 import os
 from dotenv import load_dotenv
+
+# Load env variables from .env file
 load_dotenv()
 
 # Root project and upload directory location
