@@ -87,9 +87,3 @@ class UploadedFiles(db.Model):
 
     def __repr__(self):
         return f"{self.id}, {self.reg_id}, {self.file_link}, {self.is_signature}"
-
-
-
-
-
-
