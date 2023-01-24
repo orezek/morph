@@ -63,7 +63,3 @@ def post_form():
                                navbar_metadata=navbar_metadata,
                                reg_card_form=reg_card_form)
 
-
-# @form_blueprint.route("/success")
-# def success():
-#     return "The form submission was successful. Thank you"
