@@ -13,7 +13,7 @@ form_blueprint = Blueprint("form_blueprint", __name__, template_folder="template
 
 
 # GET implementation
-@form_blueprint.route("demo/form", methods=["GET"])
+@form_blueprint.route("/demo/form", methods=["GET"])
 def get_form():
     reg_card_form = RegCardForm()
     return render_template("form.html",
@@ -23,7 +23,7 @@ def get_form():
 
 
 # POST implementation
-@form_blueprint.route("demo/form", methods=["POST"])
+@form_blueprint.route("/demo/form", methods=["POST"])
 def post_form():
     reg_card_form = RegCardForm()
     if reg_card_form.validate_on_submit():
